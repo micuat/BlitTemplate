@@ -37,9 +37,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
---- !u!127 &3
-LevelGameManager:
-  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -68,6 +65,7 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -95,7 +93,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 326565778}
-  - 114: {fileID: 326565779}
   m_Layer: 0
   m_Name: Camera Pivot
   m_TagString: Untagged
@@ -116,28 +113,6 @@ Transform:
   - {fileID: 2010005518}
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!114 &326565779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 326565777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f91a6fa75d39940268b68c6204273e22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  position:
-    mode: 0
-    velocity: 1
-    arbitraryVector: {x: 0, y: 1, z: 0}
-    randomness: 0
-  rotation:
-    mode: 2
-    velocity: 30
-    arbitraryVector: {x: 0, y: 1, z: 0}
-    randomness: 0
-  useLocalCoordinate: 1
 --- !u!1 &1113537728
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,23 +200,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8daf798f0664336a4e8b9d914d7502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxParticles: 32768
-  _emitterPosition: {x: 0, y: 0, z: 20}
-  _emitterSize: {x: 50, y: 50, z: 50}
-  _throttle: 1
-  _direction: {x: -0, y: -0, z: -1}
-  _minSpeed: 13.02139
-  _maxSpeed: 26.3101616
-  _spread: .0309999995
-  _noiseAmplitude: 11
-  _noiseFrequency: .104000002
-  _noiseSpeed: 2.42000008
-  _color: {r: 1.52358079, g: 1.97518885, b: 2.09299994, a: 1}
-  _tail: 1
-  _randomSeed: 0
-  _debug: 0
+  _maxParticles: 20480
+  _emitterPosition: {x: 0, y: 0, z: .00100000005}
+  _debug: 1
   _kernelShader: {fileID: 4800000, guid: 6afe8e4e613e44e00bcbd80b0615a8de, type: 3}
-  _lineShader: {fileID: 4800000, guid: 456607e7d289e480eb05f5bc12ad0fe6, type: 3}
   _debugShader: {fileID: 4800000, guid: 6d079a8b94e4546bd8b1c43b825a8305, type: 3}
 --- !u!4 &1600744610
 Transform:
@@ -291,7 +253,9 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -340,8 +304,6 @@ GameObject:
   - 92: {fileID: 2010005516}
   - 124: {fileID: 2010005515}
   - 81: {fileID: 2010005514}
-  - 114: {fileID: 2010005519}
-  - 114: {fileID: 2010005520}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -398,6 +360,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 1
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
@@ -415,45 +378,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 326565778}
   m_RootOrder: 0
---- !u!114 &2010005519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2010005513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d637268abbbb5428e991dd9ec93136f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  positionFrequency: .200000003
-  rotationFrequency: .200000003
-  positionAmount: .300000012
-  rotationAmount: 30
-  positionComponents: {x: 1, y: 1, z: 1}
-  rotationComponents: {x: 1, y: 1, z: 1}
-  positionOctave: 3
-  rotationOctave: 3
---- !u!114 &2010005520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2010005513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffd37938bd1d34558a64a40ff7419815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tweakMode: 1
-  Threshold: .300000012
-  MasterAmount: 2
-  MediumAmount: .200000003
-  LargeAmount: .400000006
-  Tint: {r: 1, g: 1, b: 1, a: 1}
-  KernelSize: 25
-  MediumKernelScale: 1
-  LargeKernelScale: 5
-  BlendMode: 0
-  HighQuality: 1
-  videoBloomShader: {fileID: 4800000, guid: 4da5120001c1945e99d8db7be2c8c652, type: 3}
